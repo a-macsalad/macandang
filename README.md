@@ -26,4 +26,23 @@ in January 2021. This is their shared repo.
 
   `git pull` or `git pull origin main`
   
- 
+# on Python Environments...
+
+Read this for more info: https://realpython.com/effective-python-environment/
+
+Personally, I like virtualenv.
+
+1) Within your python project, do `pip install virtualenv`
+
+2) `virtualenv env` declares an environment. Make sure you're running python3 by doing `python --version` in terminal. I get:
+
+```
+(base) ➜  macandang git:(unit1) ✗ python --version
+Python 3.8.3
+```
+
+3) Activate the environment `source ./env/bin/activate` and go ahead and download any packages you want with `pip install ${package_name}`
+
+4) When done, do `deactivate` 
+
+
