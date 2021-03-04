@@ -1,23 +1,8 @@
-# Hangman game
-#
-
-# -----------------------------------
-# Helper code
-# You don't need to understand this helper code,
-# but you will have to know how to use the functions
-# (so be sure to read the docstrings!)
-
 import random
 
 WORDLIST_FILENAME = "words.txt"
 
 def loadWords():
-    """
-    Returns a list of valid words. Words are strings of lowercase letters.
-    
-    Depending on the size of the word list, this function may
-    take a while to finish.
-    """
     print("Loading word list from file...")
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r')
@@ -29,11 +14,6 @@ def loadWords():
     return wordlist
 
 def chooseWord(wordlist):
-    """
-    wordlist (list): list of words (strings)
-
-    Returns a word from wordlist at random
-    """
     return random.choice(wordlist)
 
 # end of helper code
@@ -41,16 +21,18 @@ def chooseWord(wordlist):
 
 # Load the list of words into the variable wordlist
 # so that it can be accessed from anywhere in the program
-wordlist = loadWords()
+
+# wordlist = loadWords()
 
 def isWordGuessed(secretWord, lettersGuessed):
-    '''
-    secretWord: string, the word the user is guessing
-    lettersGuessed: list, what letters have been guessed so far
-    returns: boolean, True if all the letters of secretWord are in lettersGuessed;
-      False otherwise
-    '''
-    # FILL IN YOUR CODE HERE...
+    correct_letters = [char for char in lettersGuessed if char in secretWord]
+    
+    if len(correct_letters) == len(set(secretWord)):
+        return True
+    else:
+        return False
+
+    
 
 
 
@@ -94,7 +76,26 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
+    length = len(secretWord)
+    rounds = 0
+    
+
+    print("")
+    print(" ---------------- ")
+    print(f"Greetings! The secret word contains {length} letters...")
+    print(" ---------------- ")
+    print("")
+
+
+    print("The Rules: You get 1 guess per round. 8 Rounds total.")
+    
+    guess = input("Give us a letter, precious ")
+    print(f"You guessed the letter {guess}")
+
+    # while rounds < 8:
+        
+    
+    
 
 
 
@@ -106,4 +107,5 @@ def hangman(secretWord):
 # secretWord while you're testing)
 
 # secretWord = chooseWord(wordlist).lower()
+# secretWord = "tabulate"
 # hangman(secretWord)
