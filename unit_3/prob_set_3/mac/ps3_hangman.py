@@ -1,4 +1,5 @@
 import random
+import string 
 
 WORDLIST_FILENAME = "words.txt"
 
@@ -24,36 +25,34 @@ def chooseWord(wordlist):
 
 # wordlist = loadWords()
 
-def isWordGuessed(secretWord, lettersGuessed):
+def isWordGuessed(secretWord: str, lettersGuessed: list) -> bool:
     correct_letters = [char for char in lettersGuessed if char in secretWord]
     
     if len(correct_letters) == len(set(secretWord)):
         return True
     else:
         return False
-
     
 
 
+def getGuessedWord(secretWord: str, lettersGuessed: list) -> str:
+    correct_letters = [char for char in lettersGuessed if char in secretWord]
+    final_list = []
+    
+    for char in secretWord:
+        if char in correct_letters:
+            final_list.append(char)
+        else:
+            final_list.append("_")
+    return " ".join(final_list)
 
-def getGuessedWord(secretWord, lettersGuessed):
-    '''
-    secretWord: string, the word the user is guessing
-    lettersGuessed: list, what letters have been guessed so far
-    returns: string, comprised of letters and underscores that represents
-      what letters in secretWord have been guessed so far.
-    '''
-    # FILL IN YOUR CODE HERE...
 
 
+def getAvailableLetters(lettersGuessed: list) -> str:
+    alphabet = string.ascii_lowercase
+    remainder = [char for char in alphabet if char not in lettersGuessed]
 
-def getAvailableLetters(lettersGuessed):
-    '''
-    lettersGuessed: list, what letters have been guessed so far
-    returns: string, comprised of letters that represents what letters have not
-      yet been guessed.
-    '''
-    # FILL IN YOUR CODE HERE...
+    return "".join(remainder)
     
 
 def hangman(secretWord):
