@@ -78,7 +78,7 @@ def hangman(secretWord: str):
         print("You have these available letters: ", getAvailableLetters(letters_guessed))
         print("")
 
-        guess = input("Give us a letter, precious...")
+        guess = input("Give us a letter, precious...\n")
 
         if guess == "":
             print("Choose a letter, dude")
@@ -89,17 +89,22 @@ def hangman(secretWord: str):
                 continue
 
             print("")
-            print("correct!")            
-        #     print(f"You guessed the letter {guess}")
-        #     print("Good guess!\n")
+            print(f"You guessed the letter {guess}")
+            print("Correct!\n")            
+        
             letters_guessed.append(guess)
-        #     print("MY LETTERS ", letters_guessed)
-        #     getGuessedWord(secretWord, letters_guessed)
+            existing = getGuessedWord(secretWord, letters_guessed)
+
+            print("What your mystery word looks like: \n", existing)
         else:
+            if guess in letters_guessed:
+                print("IDIOT! You've tried that letter and it didn't work") 
+
             print("WRONG! That is not in the damn word. FOCUS!") 
+            letters_guessed.append(guess)
             guesses -= 1
         #     print(f"Oops! The letter {guess} is not in my word! Hahaha!")
-        #     print("Your hint again: ", getGuessedWord(secretWord, letters_guessed))
+            print("Your hint again: ", getGuessedWord(secretWord, letters_guessed))
         
     
     
@@ -114,5 +119,5 @@ def hangman(secretWord: str):
 # secretWord while you're testing)
 
 # secretWord = chooseWord(wordlist).lower()
-# secretWord = "apple"
-# hangman(secretWord)
+secretWord = "apple"
+hangman(secretWord)
