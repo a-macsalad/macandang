@@ -32,14 +32,17 @@ def isWordGuessed(secretWord: str, lettersGuessed: list) -> bool:
 
 def getGuessedWord(secretWord: str, lettersGuessed: list) -> str:
     correct_letters = [char for char in lettersGuessed if char in secretWord]
-    final_list = []
+
+    string_representation = ["_" for x in range(len(secretWord))]
     
     for char in secretWord:
         if char in correct_letters:
-            final_list.append(char)
-        else:
-            final_list.append("_")
-    return " ".join(final_list)
+            location_idx = [i for i, a in enumerate(secretWord) if a == char] # returns array of indexes
+
+            for idx in location_idx:
+                string_representation[idx] = char
+
+    return " ".join(string_representation)
 
 
 
@@ -51,6 +54,7 @@ def getAvailableLetters(lettersGuessed: list) -> str:
 
  
 def letterAlreadyChosen(letter: str, letters_guessed: list):
+    print("")
     print(f"You've already guessed the letter {letter}, you dolt!")
     print("These are your guesses \n", letters_guessed)
 
@@ -74,12 +78,12 @@ def hangman(secretWord: str):
         print("You have these available letters: ", getAvailableLetters(letters_guessed))
         print("")
 
-        guess = input("Give us a letter, precious \n")
+        guess = input("Give us a letter, precious...")
 
         if guess == "":
             print("Choose a letter, dude")
 
-        if guess in secretWord and guess != "":
+        if guess in secretWord:
             if guess in letters_guessed:
                 letterAlreadyChosen(guess, letters_guessed)
                 continue
@@ -110,5 +114,5 @@ def hangman(secretWord: str):
 # secretWord while you're testing)
 
 # secretWord = chooseWord(wordlist).lower()
-secretWord = "apple"
-hangman(secretWord)
+# secretWord = "apple"
+# hangman(secretWord)
