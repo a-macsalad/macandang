@@ -5,13 +5,13 @@ HAND_SIZE = 7
 # def test_always_passes():
 #     assert True
 
-# def test_three_letter_word():
-#     word = "app"
-#     assert getWordScore(word, HAND_SIZE) == 21
+def test_three_letter_word():
+    word = "app"
+    assert getWordScore(word, HAND_SIZE) == 21
 
-# def test_two_letter():
-#     word = "it"
-#     assert getWordScore(word, HAND_SIZE) == 4
+def test_two_letter():
+    word = "it"
+    assert getWordScore(word, HAND_SIZE) == 4
 
 def test_seven_letter_word():
     word = "waybill"

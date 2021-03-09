@@ -63,13 +63,13 @@ def getWordScore(word: str, n: int) -> int:
 
     counter = counter * len(word)
 
-    if len(set(word)) == len(word):
-        print("THIS IS TRUE, ", counter)
+    if n == len(word) and len(word) != 0:
         counter += 50
-        print("AFTER THE ADDITION", counter)
-        return counter
-    else:
-        return counter
+    
+    return counter
+
+
+    
 
 
 
