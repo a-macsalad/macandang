@@ -54,22 +54,23 @@ def getFrequencyDict(sequence):
 #
 # Problem #1: Scoring a word
 #
-def getWordScore(word, n):
-    """
-    Returns the score for a word. Assumes the word is a valid word.
+def getWordScore(word: str, n: int) -> int:
+    counter = 0
 
-    The score for a word is the sum of the points for letters in the
-    word, multiplied by the length of the word, PLUS 50 points if all n
-    letters are used on the first turn.
+    for char in word:
+        val = SCRABBLE_LETTER_VALUES[char]
+        counter += val
 
-    Letters are scored as in Scrabble; A is worth 1, B is worth 3, C is
-    worth 3, D is worth 2, E is worth 1, and so on (see SCRABBLE_LETTER_VALUES)
+    counter = counter * len(word)
 
-    word: string (lowercase letters)
-    n: integer (HAND_SIZE; i.e., hand size required for additional points)
-    returns: int >= 0
-    """
-    # TO DO ... <-- Remove this comment when you code this function
+    if len(set(word)) == len(word):
+        print("THIS IS TRUE, ", counter)
+        counter += 50
+        print("AFTER THE ADDITION", counter)
+        return counter
+    else:
+        return counter
+
 
 
 
