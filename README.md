@@ -46,3 +46,6 @@ Python 3.8.3
 4) When done, do `deactivate` 
 
 
+# To install dependencies from requirements file
+
+`pip install -r requirements.txt`

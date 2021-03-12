@@ -25,76 +25,76 @@ def test_getWordScore():
 # end of test_getWordScore
 
 
-# def test_updateHand():
-#     """
-#     Unit test for updateHand
-#     """
-#     # test 1
-#     handOrig = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
-#     handCopy = handOrig.copy()
-#     word = "quail"
+def test_updateHand():
+    """
+    Unit test for updateHand
+    """
+    # test 1
+    handOrig = {'a':1, 'q':1, 'l':2, 'm':1, 'u':1, 'i':1}
+    handCopy = handOrig.copy()
+    word = "quail"
 
-#     hand2 = updateHand(handCopy, word)
-#     expectedHand1 = {'l':1, 'm':1}
-#     expectedHand2 = {'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}
-#     if hand2 != expectedHand1 and hand2 != expectedHand2:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
+    hand2 = updateHand(handCopy, word)
+    expectedHand1 = {'l':1, 'm':1}
+    expectedHand2 = {'a':0, 'q':0, 'l':1, 'm':1, 'u':0, 'i':0}
+    if hand2 != expectedHand1 and hand2 != expectedHand2:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
 
-#         return # exit function
-#     if handCopy != handOrig:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tOriginal hand was", handOrig)
-#         print("\tbut implementation of updateHand mutated the original hand!")
-#         print("\tNow the hand looks like this:", handCopy)
+        return # exit function
+    if handCopy != handOrig:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tOriginal hand was", handOrig)
+        print("\tbut implementation of updateHand mutated the original hand!")
+        print("\tNow the hand looks like this:", handCopy)
         
-#         return # exit function
+        return # exit function
         
-#     # test 2
-#     handOrig = {'e':1, 'v':2, 'n':1, 'i':1, 'l':2}
-#     handCopy = handOrig.copy()
-#     word = "evil"
+    # test 2
+    handOrig = {'e':1, 'v':2, 'n':1, 'i':1, 'l':2}
+    handCopy = handOrig.copy()
+    word = "evil"
 
-#     hand2 = updateHand(handCopy, word)
-#     expectedHand1 = {'v':1, 'n':1, 'l':1}
-#     expectedHand2 = {'e':0, 'v':1, 'n':1, 'i':0, 'l':1}
-#     if hand2 != expectedHand1 and hand2 != expectedHand2:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
+    hand2 = updateHand(handCopy, word)
+    expectedHand1 = {'v':1, 'n':1, 'l':1}
+    expectedHand2 = {'e':0, 'v':1, 'n':1, 'i':0, 'l':1}
+    if hand2 != expectedHand1 and hand2 != expectedHand2:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
 
-#         return # exit function
+        return # exit function
 
-#     if handCopy != handOrig:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tOriginal hand was", handOrig)
-#         print("\tbut implementation of updateHand mutated the original hand!")
-#         print("\tNow the hand looks like this:", handCopy)
+    if handCopy != handOrig:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tOriginal hand was", handOrig)
+        print("\tbut implementation of updateHand mutated the original hand!")
+        print("\tNow the hand looks like this:", handCopy)
         
-#         return # exit function
+        return # exit function
 
-#     # test 3
-#     handOrig = {'h': 1, 'e': 1, 'l': 2, 'o': 1}
-#     handCopy = handOrig.copy()
-#     word = "hello"
+    # test 3
+    handOrig = {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+    handCopy = handOrig.copy()
+    word = "hello"
 
-#     hand2 = updateHand(handCopy, word)
-#     expectedHand1 = {}
-#     expectedHand2 = {'h': 0, 'e': 0, 'l': 0, 'o': 0}
-#     if hand2 != expectedHand1 and hand2 != expectedHand2:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
+    hand2 = updateHand(handCopy, word)
+    expectedHand1 = {}
+    expectedHand2 = {'h': 0, 'e': 0, 'l': 0, 'o': 0}
+    if hand2 != expectedHand1 and hand2 != expectedHand2:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tReturned: ", hand2, "\n\t-- but expected:", expectedHand1, "or", expectedHand2)
         
-#         return # exit function
+        return # exit function
 
-#     if handCopy != handOrig:
-#         print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
-#         print("\tOriginal hand was", handOrig)
-#         print("\tbut implementation of updateHand mutated the original hand!")
-#         print("\tNow the hand looks like this:", handCopy)
+    if handCopy != handOrig:
+        print("FAILURE: test_updateHand('"+ word +"', " + str(handOrig) + ")")
+        print("\tOriginal hand was", handOrig)
+        print("\tbut implementation of updateHand mutated the original hand!")
+        print("\tNow the hand looks like this:", handCopy)
         
-#         return # exit function
+        return # exit function
 
-#     print("SUCCESS: test_updateHand()")
+    print("SUCCESS: test_updateHand()")
 
 # # end of test_updateHand
 
@@ -190,10 +190,10 @@ wordList = loadWords()
 print("----------------------------------------------------------------------")
 print("Testing getWordScore...")
 test_getWordScore()
-# print("----------------------------------------------------------------------")
-# print("Testing updateHand...")
-# test_updateHand()
-# print("----------------------------------------------------------------------")
+print("----------------------------------------------------------------------")
+print("Testing updateHand...")
+test_updateHand()
+print("----------------------------------------------------------------------")
 # print("Testing isValidWord...")
 # test_isValidWord(wordList)
 # print("----------------------------------------------------------------------")
