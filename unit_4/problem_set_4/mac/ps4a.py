@@ -127,8 +127,6 @@ def dealHand(n):
 
 
 def updateHand(hand: dict, word: str) -> dict:
-    # new_dict = {}
-
     word_freq = getFrequencyDict(word)
 
     # import code
@@ -144,22 +142,15 @@ def updateHand(hand: dict, word: str) -> dict:
 
     return {k: v - word_freq[k] if k in word_freq else v for (k, v) in hand.items()}
 
+    # NOTE: dict comprehension reading: shorturl.at/aezJR
 
 #
 # Problem #3: Test word validity
 #
+
+
 def isValidWord(word, hand, wordList):
-    """
-    Returns True if word is in the wordList and is entirely
-    composed of letters in the hand. Otherwise, returns False.
-
-    Does not mutate hand or wordList.
-
-    word: string
-    hand: dictionary (string -> int)
-    wordList: list of lowercase strings
-    """
-    # TO DO ... <-- Remove this comment when you code this function
+    pass
 
 
 #
