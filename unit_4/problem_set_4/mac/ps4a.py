@@ -127,20 +127,22 @@ def dealHand(n):
 
 
 def updateHand(hand: dict, word: str) -> dict:
-    new_dict = {}
+    # new_dict = {}
 
     word_freq = getFrequencyDict(word)
 
     # import code
     # code.interact(local=dict(globals(), **locals()))
 
-    for char in hand:
-        if char in word_freq:
-            new_dict[char] = hand[char] - word_freq[char]
-        else:
-            new_dict[char] = hand[char]
+    # for char in hand:
+    #     if char in word_freq:
+    #         new_dict[char] = hand[char] - word_freq[char]
+    #     else:
+    #         new_dict[char] = hand[char]
 
-    return new_dict
+    # return new_dict
+
+    return {k: v - word_freq[k] if k in word_freq else v for (k, v) in hand.items()}
 
 
 #
