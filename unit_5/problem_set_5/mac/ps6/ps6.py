@@ -81,13 +81,16 @@ class Message(object):
 
         applied = ""
         for char in self.message_text:
-            import code; code.interact(local=dict(globals(), **locals()))
+            
+            if char.isalpha():
+                applied += reference[char]
+            else:
+                applied += char
 
-            applied += reference[char]
         return applied
 
 
-
+# import code; code.interact(local=dict(globals(), **locals()))
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
@@ -179,10 +182,9 @@ class CiphertextMessage(Message):
         pass #delete this line and replace with your code here
 
 #Example test case (Message)
-message = Message('hello')
-print('Expected Output: jgnnq')
-print('Actual Output:', message.build_shift_dict(2))
-message.apply_shift(2)
+message = Message('we are taking 6.00.1x')
+# print('Expected Output: jgnnq')
+message.apply_shift(5)
 
 
 # #Example test case (PlaintextMessage)

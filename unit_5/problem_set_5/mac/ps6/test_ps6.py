@@ -4,6 +4,21 @@ def test_always_passes():
     assert True
 
 def test_three_letter_shift_lowercase():
-    shift = 3
-    mess = Message.new("hello")
-    assert mess.build_shift_dict(shift) == {'a': 'd', 'b': 'e', 'c': 'f', 'd': 'g', 'e': 'h', 'f': 'i', 'g': 'j', 'h': 'k', 'i': 'l', 'j': 'm', 'k': 'n', 'l': 'o', 'm': 'p', 'n': 'q', 'o': 'r', 'p': 's', 'q': 't', 'r': 'u', 's': 'v', 't': 'w', 'u': 'x', 'v': 'y', 'w': 'z', 'x': 'a', 'y': 'b', 'z': 'c'}
+    shift = 2
+    message = Message('hello')
+    assert (message.apply_shift(shift)) == "jgnnq"
+
+def test_zero_letter_shift_lowercase():
+    shift = 0
+    message = Message('hello')
+    assert (message.apply_shift(shift)) == "hello"
+
+def test_five_letter_shift_lowercase_with_numbers():
+    shift = 6
+    message = Message("we are taking 6.00.1x")
+    assert (message.apply_shift(shift)) == "ck gxk zgqotm 6.00.1d"
+
+def test_five_letter_shift_lowercase_with_numbers():
+    shift = 21
+    message = Message("th!s is Problem Set 6?")
+    assert (message.apply_shift(shift)) == "oc!n dn Kmjwgzh Nzo 6?"
