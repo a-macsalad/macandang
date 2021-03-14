@@ -2,15 +2,6 @@ import string
 
 ### DO NOT MODIFY THIS FUNCTION ###
 def load_words(file_name):
-    '''
-    file_name (string): the name of the file containing 
-    the list of words to load    
-    
-    Returns: a list of valid words. Words are strings of lowercase letters.
-    
-    Depending on the size of the word list, this function may
-    take a while to finish.
-    '''
     print('Loading word list from file...')
     # inFile: file
     in_file = open(file_name, 'r')
@@ -56,30 +47,13 @@ def get_story_string():
 WORDLIST_FILENAME = 'words.txt'
 
 class Message(object):
-    ### DO NOT MODIFY THIS METHOD ###
     def __init__(self, text):
-        '''
-        Initializes a Message object
-                
-        text (string): the message's text
-
-        a Message object has two attributes:
-            self.message_text (string, determined by input text)
-            self.valid_words (list, determined using helper function load_words
-        '''
         self.message_text = text
         self.valid_words = load_words(WORDLIST_FILENAME)
 
-    ### DO NOT MODIFY THIS METHOD ###
     def get_message_text(self):
-        '''
-        Used to safely access self.message_text outside of the class
-        
-        Returns: self.message_text
-        '''
         return self.message_text
 
-    ### DO NOT MODIFY THIS METHOD ###
     def get_valid_words(self):
         '''
         Used to safely access a copy of self.valid_words outside of the class
@@ -88,35 +62,32 @@ class Message(object):
         '''
         return self.valid_words[:]
         
-    def build_shift_dict(self, shift):
-        '''
-        Creates a dictionary that can be used to apply a cipher to a letter.
-        The dictionary maps every uppercase and lowercase letter to a
-        character shifted down the alphabet by the input shift. The dictionary
-        should have 52 keys of all the uppercase letters and all the lowercase
-        letters only.        
-        
-        shift (integer): the amount by which to shift every letter of the 
-        alphabet. 0 <= shift < 26
+    def build_shift_dict(self, shift: int):            
+            s_alpha = "abcdefghijklmnopqrstuvwxyz"
+            s_shifted = s_alpha[shift::] + s_alpha[:shift]
+            
 
-        Returns: a dictionary mapping a letter (string) to 
-                 another letter (string). 
-        '''
-        pass #delete this line and replace with your code here
+            b_alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            b_shifted = b_alpha[shift::] + b_alpha[:shift]
 
-    def apply_shift(self, shift):
-        '''
-        Applies the Caesar Cipher to self.message_text with the input shift.
-        Creates a new string that is self.message_text shifted down the
-        alphabet by some number of characters determined by the input shift        
-        
-        shift (integer): the shift with which to encrypt the message.
-        0 <= shift < 26
+            lower = dict(zip(s_alpha, s_shifted))
+            upper = dict(zip(b_alpha, b_shifted))
+            
+            final = {**lower, **upper}
+            return final
+            
+    def apply_shift(self, shift: int):
+        reference = self.build_shift_dict(shift)
 
-        Returns: the message text (string) in which every character is shifted
-             down the alphabet by the input shift
-        '''
-        pass #delete this line and replace with your code here
+        applied = ""
+        for char in self.message_text:
+            import code; code.interact(local=dict(globals(), **locals()))
+
+            applied += reference[char]
+        return applied
+
+
+
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
@@ -207,12 +178,19 @@ class CiphertextMessage(Message):
         '''
         pass #delete this line and replace with your code here
 
-#Example test case (PlaintextMessage)
-plaintext = PlaintextMessage('hello', 2)
+#Example test case (Message)
+message = Message('hello')
 print('Expected Output: jgnnq')
-print('Actual Output:', plaintext.get_message_text_encrypted())
+print('Actual Output:', message.build_shift_dict(2))
+message.apply_shift(2)
+
+
+# #Example test case (PlaintextMessage)
+# plaintext = PlaintextMessage('hello', 2)
+# print('Expected Output: jgnnq')
+# print('Actual Output:', plaintext.get_message_text_encrypted())
     
 #Example test case (CiphertextMessage)
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
-print('Actual Output:', ciphertext.decrypt_message())
+# ciphertext = CiphertextMessage('jgnnq')
+# print('Expected Output:', (24, 'hello'))
+# print('Actual Output:', ciphertext.decrypt_message())
