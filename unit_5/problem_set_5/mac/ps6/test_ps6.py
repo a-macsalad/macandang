@@ -23,6 +23,8 @@ def test_five_letter_shift_lowercase_with_numbers():
     message = Message("th!s is Problem Set 6?")
     assert (message.apply_shift(shift)) == "oc!n dn Kmjwgzh Nzo 6?"
 
+# NOTE: Tests PlaintextMessage class
+
 def test_PlaintextMessage_changes_shift():
     plaintext = PlaintextMessage('hello', 2)
     assert plaintext.get_shift() == 2
